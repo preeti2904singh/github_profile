@@ -44,6 +44,16 @@ class App extends Component {
 		})
 	}
 
+	// Search username
+	handleFormSubmit(username){
+		this.setState({
+			username: username
+		},function(){
+			this.getUserRepos();
+			this.getUserData();
+		})
+	}
+
 	componentDidMount(){
 		this.getUserRepos();
 		this.getUserData();
@@ -51,7 +61,7 @@ class App extends Component {
 	render(){
 		return(
 			<div>
-				<Search />
+				<Search onFormSubmit = {this.handleFormSubmit.bind(this)}/>
 				<Profile userData={this.state.userData} userRepos={this.state.userRepos} />
 			</div>
 		)
